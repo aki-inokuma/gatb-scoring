@@ -1,5 +1,4 @@
-import { readFile, writeFile, mkdir } from 'fs/promises'
-import path from 'path'
+import { kv } from '@vercel/kv'
 import type { GatbResult } from '@/types/gatb'
 
 export interface SavedResult {
@@ -8,45 +7,31 @@ export interface SavedResult {
   result: GatbResult
 }
 
-const DB_PATH = path.join(process.cwd(), 'data', 'results.json')
-
-async function readDb(): Promise<SavedResult[]> {
-  try {
-    const raw = await readFile(DB_PATH, 'utf-8')
-    return JSON.parse(raw) as SavedResult[]
-  } catch {
-    return []
-  }
-}
-
-async function writeDb(data: SavedResult[]): Promise<void> {
-  await mkdir(path.dirname(DB_PATH), { recursive: true })
-  await writeFile(DB_PATH, JSON.stringify(data, null, 2), 'utf-8')
-}
+const INDEX_KEY = 'gatb:index'
 
 export async function getAllResults(): Promise<SavedResult[]> {
-  const data = await readDb()
-  return data.sort((a, b) => b.savedAt.localeCompare(a.savedAt))
+  const ids = await kv.lrange<string>(INDEX_KEY, 0, -1)
+  if (!ids || ids.length === 0) return []
+  const entries = await Promise.all(ids.map((id) => kv.get<SavedResult>(`gatb:result:${id}`)))
+  return entries.filter((e): e is SavedResult => e !== null).sort((a, b) => b.savedAt.localeCompare(a.savedAt))
 }
 
 export async function saveResult(result: GatbResult): Promise<SavedResult> {
-  const data = await readDb()
   const entry: SavedResult = {
     id: Date.now().toString(),
     savedAt: new Date().toISOString(),
     result,
   }
-  data.push(entry)
-  await writeDb(data)
+  await kv.set(`gatb:result:${entry.id}`, entry)
+  await kv.lpush(INDEX_KEY, entry.id)
   return entry
 }
 
 export async function getResultById(id: string): Promise<SavedResult | null> {
-  const data = await readDb()
-  return data.find((e) => e.id === id) ?? null
+  return await kv.get<SavedResult>(`gatb:result:${id}`)
 }
 
 export async function deleteResult(id: string): Promise<void> {
-  const data = await readDb()
-  await writeDb(data.filter((e) => e.id !== id))
+  await kv.del(`gatb:result:${id}`)
+  await kv.lrem(INDEX_KEY, 0, id)
 }
