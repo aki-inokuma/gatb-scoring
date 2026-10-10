@@ -8,7 +8,12 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-  const result = (await req.json()) as GatbResult
-  const entry = await saveResult(result)
-  return NextResponse.json(entry, { status: 201 })
+  try {
+    const result = (await req.json()) as GatbResult
+    const entry = await saveResult(result)
+    return NextResponse.json(entry, { status: 201 })
+  } catch (e) {
+    console.error('Save error:', e)
+    return NextResponse.json({ error: String(e) }, { status: 500 })
+  }
 }
