@@ -1,0 +1,200 @@
+{
+  "name": "テス男",
+  "date": "2026-08-19",
+  "age": "28歳",
+  "sex": "男性",
+  "staff": "",
+  "version": "高校・一般用",
+  "subtests": [
+    {
+      "code": "T01",
+      "name": "円打点",
+      "rawScore": 86,
+      "convertedScore": 77,
+      "mean": 101.98,
+      "sd": 13.97,
+      "aptitudes": [
+        "K"
+      ]
+    },
+    {
+      "code": "T02",
+      "name": "記号記入",
+      "rawScore": 42,
+      "convertedScore": 74,
+      "mean": 49.54,
+      "sd": 5.77,
+      "aptitudes": [
+        "K"
+      ]
+    },
+    {
+      "code": "T03",
+      "name": "形態照合",
+      "rawScore": 15,
+      "convertedScore": 83,
+      "mean": 17.85,
+      "sd": 3.42,
+      "aptitudes": [
+        "P"
+      ]
+    },
+    {
+      "code": "T04",
+      "name": "名詞比較",
+      "rawScore": 34,
+      "convertedScore": 71,
+      "mean": 42.19,
+      "sd": 5.68,
+      "aptitudes": [
+        "Q"
+      ]
+    },
+    {
+      "code": "T05",
+      "name": "図柄照合",
+      "rawScore": 15,
+      "convertedScore": 83,
+      "mean": 16.86,
+      "sd": 2.15,
+      "aptitudes": [
+        "P"
+      ]
+    },
+    {
+      "code": "T06",
+      "name": "平面判断",
+      "rawScore": 11,
+      "convertedScore": 84,
+      "mean": 13.05,
+      "sd": 2.64,
+      "aptitudes": [
+        "S"
+      ]
+    },
+    {
+      "code": "T07",
+      "name": "計算",
+      "rawScore": 14,
+      "convertedScore": 78,
+      "mean": 17.88,
+      "sd": 3.55,
+      "aptitudes": [
+        "N"
+      ]
+    },
+    {
+      "code": "T08",
+      "name": "語意",
+      "rawScore": 9,
+      "convertedScore": 57,
+      "mean": 17.79,
+      "sd": 4.12,
+      "aptitudes": [
+        "V"
+      ]
+    },
+    {
+      "code": "T09",
+      "name": "立体判断",
+      "rawScore": 13,
+      "convertedScore": 87,
+      "mean": 14.64,
+      "sd": 2.61,
+      "aptitudes": [
+        "G",
+        "S"
+      ]
+    },
+    {
+      "code": "T10",
+      "name": "文章完成",
+      "rawScore": 26,
+      "convertedScore": 92,
+      "mean": 28.6,
+      "sd": 6.77,
+      "aptitudes": [
+        "G",
+        "V"
+      ]
+    },
+    {
+      "code": "T11",
+      "name": "算数応用",
+      "rawScore": 10,
+      "convertedScore": 114,
+      "mean": 8.37,
+      "sd": 2.35,
+      "aptitudes": [
+        "G",
+        "N"
+      ]
+    }
+  ],
+  "aptitudes": [
+    {
+      "key": "G",
+      "label": "知的",
+      "score": 99,
+      "adjustedScore": 107,
+      "evaluation": "C"
+    },
+    {
+      "key": "V",
+      "label": "言語",
+      "score": 68,
+      "adjustedScore": 76,
+      "evaluation": "E"
+    },
+    {
+      "key": "N",
+      "label": "数理",
+      "score": 91,
+      "adjustedScore": 99,
+      "evaluation": "C"
+    },
+    {
+      "key": "Q",
+      "label": "書記",
+      "score": 71,
+      "adjustedScore": 79,
+      "evaluation": "E"
+    },
+    {
+      "key": "S",
+      "label": "空間",
+      "score": 83,
+      "adjustedScore": 93,
+      "evaluation": "D"
+    },
+    {
+      "key": "P",
+      "label": "形態",
+      "score": 78,
+      "adjustedScore": 88,
+      "evaluation": "D"
+    },
+    {
+      "key": "K",
+      "label": "共応",
+      "score": 72,
+      "adjustedScore": 82,
+      "evaluation": "E"
+    },
+    {
+      "key": "F",
+      "label": "指先",
+      "score": 0,
+      "adjustedScore": 0,
+      "evaluation": "―"
+    },
+    {
+      "key": "M",
+      "label": "手腕",
+      "score": 0,
+      "adjustedScore": 0,
+      "evaluation": "―"
+    }
+  ],
+  "jobDomains": []
+}
